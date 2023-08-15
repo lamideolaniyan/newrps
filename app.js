@@ -22,6 +22,7 @@ const getPlay = () => {
 		// PLAY GAME & RENDER DOM
 		playGame()
 		renderDOM()
+		renderHand()
 
 		// GET AND ALERT WINNER
 		getWinner()
@@ -41,6 +42,7 @@ const getPlay = () => {
 		// PLAY GAME & RENDER DOM
 		playGame()
 		renderDOM()
+		renderHand()
 
 		// GET AND ALERT WINNER
 		getWinner()
@@ -60,6 +62,7 @@ const getPlay = () => {
 		// PLAY GAME & RENDER DOM
 		playGame()
 		renderDOM()
+		renderHand()
 
 		// GET AND ALERT WINNER
 		getWinner()
@@ -148,6 +151,15 @@ const stopGame = () => {
 	document.querySelector('.btn-rock').disabled = true
 	document.querySelector('.btn-paper').disabled = true
 	document.querySelector('.btn-scissors').disabled = true
+}
+
+const renderHand = () => {
+	document
+		.querySelector('.player-hand')
+		.setAttribute('src', `${userPlay.toLowerCase()}.png`)
+	document
+		.querySelector('.computer-hand')
+		.setAttribute('src', `${computerPlay.toLowerCase()}.png`)
 }
 
 document.querySelector('.btn-new').addEventListener('click', (e) => {
