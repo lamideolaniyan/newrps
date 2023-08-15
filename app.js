@@ -107,13 +107,13 @@ const getWinner = () => {
 		displayWinner()
 		// alert(`${winner} is the winner!`)
 
-		newGame()
+		stopGame()
 	} else if (computerScore === winningScore) {
 		winner = 'computer'
 		displayWinner()
 		// alert(`${winner} is the winner!`)
 
-		newGame()
+		stopGame()
 	}
 }
 
@@ -133,11 +133,24 @@ const newGame = () => {
 	winningScore = 0
 	winner = ''
 
+	document.querySelector('.btn-rock').disabled = false
+	document.querySelector('.btn-paper').disabled = false
+	document.querySelector('.btn-scissors').disabled = false
+
+	document.querySelector('.computer-name').classList.remove('winner')
+	document.querySelector('.player-name').classList.remove('winner')
+
 	renderDOM()
 }
 
 const displayWinner = () => {
 	document.querySelector(`.${winner}-name`).classList.add('winner')
+}
+
+const stopGame = () => {
+	document.querySelector('.btn-rock').disabled = true
+	document.querySelector('.btn-paper').disabled = true
+	document.querySelector('.btn-scissors').disabled = true
 }
 
 document.querySelector('.btn-new').addEventListener('click', (e) => {
