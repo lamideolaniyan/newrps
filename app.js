@@ -63,9 +63,6 @@ const getPlay = () => {
 
 		// GET AND ALERT WINNER
 		getWinner()
-
-		// NEWGAME
-		newGame()
 	})
 }
 
