@@ -187,19 +187,20 @@ i {
 	box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
 
-/*.winner {
-    background-color: #f7f7f7;
-}*/
-
-.winner .player-name {
+.winner {
+	/* background-color: #f7f7f7; */
 	font-weight: 300;
 	color: #eb4d4d;
+	box-shadow: 10px 12px 20px #33333357;
+}
+
+/* .winner .player-name {
 }
 
 .winner .computer-name {
 	font-weight: 300;
 	color: #eb4d4d;
-}
+} */
 
 .set-winner {
 	position: absolute;

@@ -63,6 +63,9 @@ const getPlay = () => {
 
 		// GET AND ALERT WINNER
 		getWinner()
+
+		// NEWGAME
+		newGame()
 	})
 }
 
@@ -100,11 +103,17 @@ const renderDOM = () => {
 
 const getWinner = () => {
 	if (userScore === winningScore) {
-		winner = 'PLAYER'
-		alert(`${winner} is the winner!`)
+		winner = 'player'
+		displayWinner()
+		// alert(`${winner} is the winner!`)
+
+		newGame()
 	} else if (computerScore === winningScore) {
-		winner = 'COMPUTER'
-		alert(`${winner} is the winner!`)
+		winner = 'computer'
+		displayWinner()
+		// alert(`${winner} is the winner!`)
+
+		newGame()
 	}
 }
 
@@ -114,4 +123,24 @@ const setWinningScore = () => {
 		: (winningScore = 10)
 	console.log(typeof winningScore)
 }
+
+const newGame = () => {
+	userPlay = ''
+	userScore = 0
+	computerPlay = ''
+	computerScore = 0
+	rps = ['ROCK', 'PAPER', 'SCISSORS']
+	winningScore = 0
+	winner = ''
+
+	renderDOM()
+}
+
+const displayWinner = () => {
+	document.querySelector(`.${winner}-name`).classList.add('winner')
+}
+
+document.querySelector('.btn-new').addEventListener('click', (e) => {
+	newGame()
+})
 getPlay()
