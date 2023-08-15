@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Rock Paper Scissors</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato:100,300,600"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link
+			href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-</head>
+	<body>
+		<div class="container clearfix">
+			<div class="player-panel">
+				<div class="player-name">Player</div>
+				<div class="player-score">0</div>
+				<div class="player-selection-box">
+					<div class="player-selection-label">Current</div>
+					<div class="player-selection" id="current-0">Paper</div>
+				</div>
+			</div>
 
-<body>
-    <div class="container clearfix">
-        <div class="player-panel">
-            <div class="player-name">Player</div>
-            <div class="player-score">0</div>
-            <div class="player-selection-box">
-                <div class="player-selection-label">Current</div>
-                <div class="player-selection" id="current-0">Paper</div>
-            </div>
-        </div>
+			<div class="computer-panel">
+				<div class="computer-name">Computer</div>
+				<div class="computer-score">0</div>
+				<div class="computer-selection-box">
+					<div class="computer-selection-label">Current</div>
+					<div class="computer-selection" id="current-0">Rock</div>
+				</div>
+			</div>
 
-        <div class="computer-panel">
-            <div class="computer-name">Computer</div>
-            <div class="computer-score">0</div>
-            <div class="computer-selection-box">
-                <div class="computer-selection-label">Current</div>
-                <div class="computer-selection" id="current-0">Rock</div>
-            </div>
-        </div>
+			<button class="btn-new"><i class=""></i>New Game</button>
 
-        <button class="btn-new"><i class=""></i>New Game</button>
+			<img class="player-hand" src="rock.png" alt="player hand" />
+			<img class="computer-hand" src="2.png" alt="computer selection" />
 
-        <img class="player-hand" src="rock.png" alt="player hand">
-        <img class="computer-hand" src="2.png" alt="computer selection">
+			<button class="btn-rock">ROCK</button>
+			<button class="btn-paper">PAPER</button>
+			<button class="btn-scissors">SCISSORS</button>
 
-        <button class="btn-rock">ROCK</button>
-        <button class="btn-paper">PAPER</button>
-        <button class="btn-scissors">SCISSORS</button>
-
-        <input class="set-winner" type="text" value="" placeholder="Winning Score">
-
-    </div>
-    <script src="app.js"></script>
-</body>
-
+			<input
+				class="set-winner"
+				type="text"
+				value=""
+				placeholder="Winning Score"
+			/>
+		</div>
+		<script src="./app.js"></script>
+	</body>
 </html>
