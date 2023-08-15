@@ -14,9 +14,9 @@ const getPlay = () => {
 		computerPlay = rps[Math.floor(Math.random() * 3)]
 		console.log(computerPlay)
 
-		// PLAY GAME
-
+		// PLAY GAME & RENDER DOM
 		playGame()
+		renderDOM()
 	})
 
 	document.querySelector('.btn-paper').addEventListener('click', (e) => {
@@ -27,9 +27,9 @@ const getPlay = () => {
 		computerPlay = rps[Math.floor(Math.random() * 3)]
 		console.log(computerPlay)
 
-		// PLAY GAME
-
+		// PLAY GAME & RENDER DOM
 		playGame()
+		renderDOM()
 	})
 
 	document.querySelector('.btn-scissors').addEventListener('click', (e) => {
@@ -40,9 +40,9 @@ const getPlay = () => {
 		computerPlay = rps[Math.floor(Math.random() * 3)]
 		console.log(computerPlay)
 
-		// PLAY GAME
-
+		// PLAY GAME & RENDER DOM
 		playGame()
+		renderDOM()
 	})
 }
 
@@ -70,4 +70,11 @@ const playGame = () => {
 	}
 }
 
+const renderDOM = () => {
+	document.querySelector('.player-selection').textContent = userPlay
+	document.querySelector('.computer-selection').textContent = computerPlay
+	document.querySelector('.computer-selection').textContent = computerPlay
+	document.querySelector('.player-score').textContent = userScore
+	document.querySelector('.computer-score').textContent = computerScore
+}
 getPlay()
