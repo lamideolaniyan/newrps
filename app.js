@@ -3,7 +3,7 @@ let userScore = 0
 let computerPlay = ''
 let computerScore = 0
 let rps = ['ROCK', 'PAPER', 'SCISSORS']
-let winningScore = 10
+let winningScore = 0
 let winner = ''
 
 const getPlay = () => {
@@ -11,6 +11,9 @@ const getPlay = () => {
 	document.querySelector('.btn-rock').addEventListener('click', (e) => {
 		userPlay = document.querySelector('.btn-rock').textContent
 		console.log(userPlay)
+
+		// SET WINNING SCORE
+		setWinningScore()
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
@@ -28,6 +31,9 @@ const getPlay = () => {
 		userPlay = document.querySelector('.btn-paper').textContent
 		console.log(userPlay)
 
+		// SET WINNING SCORE
+		setWinningScore()
+
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
 		console.log(computerPlay)
@@ -43,6 +49,9 @@ const getPlay = () => {
 	document.querySelector('.btn-scissors').addEventListener('click', (e) => {
 		userPlay = document.querySelector('.btn-scissors').textContent
 		console.log(userPlay)
+
+		// SET WINNING SCORE
+		setWinningScore()
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
@@ -97,5 +106,12 @@ const getWinner = () => {
 		winner = 'COMPUTER'
 		alert(`${winner} is the winner!`)
 	}
+}
+
+const setWinningScore = () => {
+	document.querySelector('.set-winner').value
+		? (winningScore = document.querySelector('.set-winner').value * 1)
+		: (winningScore = 10)
+	console.log(typeof winningScore)
 }
 getPlay()
