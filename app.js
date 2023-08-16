@@ -6,10 +6,26 @@ let rps = ['ROCK', 'PAPER', 'SCISSORS']
 let winningScore = 0
 let winner = ''
 
+const getDOM = {
+	btnRock: document.querySelector('.btn-rock'),
+	btnPaper: document.querySelector('.btn-paper'),
+	btnScissors: document.querySelector('.btn-scissors'),
+	btnNew: document.querySelector('.btn-new'),
+	playerSelection: document.querySelector('.player-selection'),
+	computerSelection: document.querySelector('.computer-selection'),
+	playerScore: document.querySelector('.player-score'),
+	computerScore: document.querySelector('.computer-score'),
+	winnerScore: document.querySelector('.set-winner'),
+	playerHand: document.querySelector('.player-hand'),
+	computerHand: document.querySelector('.computer-hand'),
+	playerName: document.querySelector('.player-name'),
+	computerName: document.querySelector('.computer-name'),
+}
+
 const getPlay = () => {
 	// Get User Play
-	document.querySelector('.btn-rock').addEventListener('click', (e) => {
-		userPlay = document.querySelector('.btn-rock').textContent
+	getDOM.btnRock.addEventListener('click', (e) => {
+		userPlay = getDOM.btnRock.textContent
 		console.log(userPlay)
 
 		// SET WINNING SCORE
@@ -28,8 +44,8 @@ const getPlay = () => {
 		getWinner()
 	})
 
-	document.querySelector('.btn-paper').addEventListener('click', (e) => {
-		userPlay = document.querySelector('.btn-paper').textContent
+	getDOM.btnPaper.addEventListener('click', (e) => {
+		userPlay = getDOM.btnPaper.textContent
 		console.log(userPlay)
 
 		// SET WINNING SCORE
@@ -48,8 +64,8 @@ const getPlay = () => {
 		getWinner()
 	})
 
-	document.querySelector('.btn-scissors').addEventListener('click', (e) => {
-		userPlay = document.querySelector('.btn-scissors').textContent
+	getDOM.btnScissors.addEventListener('click', (e) => {
+		userPlay = getDOM.btnScissors.textContent
 		console.log(userPlay)
 
 		// SET WINNING SCORE
@@ -94,11 +110,10 @@ const playGame = () => {
 }
 
 const renderDOM = () => {
-	document.querySelector('.player-selection').textContent = userPlay
-	document.querySelector('.computer-selection').textContent = computerPlay
-	document.querySelector('.computer-selection').textContent = computerPlay
-	document.querySelector('.player-score').textContent = userScore
-	document.querySelector('.computer-score').textContent = computerScore
+	getDOM.playerSelection.textContent = userPlay
+	getDOM.computerSelection.textContent = computerPlay
+	getDOM.playerScore.textContent = userScore
+	getDOM.computerScore.textContent = computerScore
 }
 
 const getWinner = () => {
@@ -118,8 +133,8 @@ const getWinner = () => {
 }
 
 const setWinningScore = () => {
-	document.querySelector('.set-winner').value
-		? (winningScore = document.querySelector('.set-winner').value * 1)
+	getDOM.winnerScore.value
+		? (winningScore = getDOM.winnerScore.value * 1)
 		: (winningScore = 10)
 	console.log(typeof winningScore)
 }
@@ -133,12 +148,12 @@ const newGame = () => {
 	winningScore = 0
 	winner = ''
 
-	document.querySelector('.btn-rock').disabled = false
-	document.querySelector('.btn-paper').disabled = false
-	document.querySelector('.btn-scissors').disabled = false
+	getDOM.btnRock.disabled = false
+	getDOM.btnPaper.disabled = false
+	getDOM.btnScissors.disabled = false
 
-	document.querySelector('.computer-name').classList.remove('winner')
-	document.querySelector('.player-name').classList.remove('winner')
+	getDOM.playerName.classList.remove('winner')
+	getDOM.computerName.classList.remove('winner')
 
 	renderDOM()
 }
@@ -148,21 +163,17 @@ const displayWinner = () => {
 }
 
 const stopGame = () => {
-	document.querySelector('.btn-rock').disabled = true
-	document.querySelector('.btn-paper').disabled = true
-	document.querySelector('.btn-scissors').disabled = true
+	getDOM.btnRock.disabled = true
+	getDOM.btnPaper.disabled = true
+	getDOM.btnScissors.disabled = true
 }
 
 const renderHand = () => {
-	document
-		.querySelector('.player-hand')
-		.setAttribute('src', `${userPlay.toLowerCase()}.png`)
-	document
-		.querySelector('.computer-hand')
-		.setAttribute('src', `${computerPlay.toLowerCase()}.png`)
+	getDOM.playerHand.setAttribute('src', `${userPlay.toLowerCase()}.png`)
+	getDOM.computerHand.setAttribute('src', `${computerPlay.toLowerCase()}.png`)
 }
 
-document.querySelector('.btn-new').addEventListener('click', (e) => {
+getDOM.btnNew.addEventListener('click', (e) => {
 	newGame()
 })
 getPlay()
