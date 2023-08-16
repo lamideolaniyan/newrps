@@ -29,54 +29,40 @@ const getPlay = () => {
 	getDOM.btnRock.addEventListener('click', (e) => {
 		userPlay = getDOM.btnRock.textContent;
 
-		// SET WINNING SCORE
 		setWinningScore();
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)];
 
-		// PLAY GAME & RENDER DOM
 		playGame();
 		renderDOM();
 		renderHand();
-
-		// GET AND DISPLAY WINNER
 		getWinner();
 	});
 
 	getDOM.btnPaper.addEventListener('click', (e) => {
 		userPlay = getDOM.btnPaper.textContent;
 
-		// SET WINNING SCORE
 		setWinningScore();
 
-		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)];
 
-		// PLAY GAME & RENDER DOM
 		playGame();
 		renderDOM();
 		renderHand();
-
-		// GET AND ALERT WINNER
 		getWinner();
 	});
 
 	getDOM.btnScissors.addEventListener('click', (e) => {
 		userPlay = getDOM.btnScissors.textContent;
 
-		// SET WINNING SCORE
 		setWinningScore();
 
-		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)];
 
-		// PLAY GAME & RENDER DOM
 		playGame();
 		renderDOM();
 		renderHand();
-
-		// GET AND ALERT WINNER
 		getWinner();
 	});
 };
@@ -100,7 +86,6 @@ const playGame = () => {
 	}
 };
 
-// FUNCTION TO RENDER TO DOM
 const renderDOM = () => {
 	getDOM.playerSelection.textContent = userPlay;
 	getDOM.computerSelection.textContent = computerPlay;
@@ -108,7 +93,6 @@ const renderDOM = () => {
 	getDOM.computerScore.textContent = computerScore;
 };
 
-// FUNCTION TO DETERMINE AND DISPLAY WINNER
 const getWinner = () => {
 	if (userScore === winningScore) {
 		winner = 'player';
@@ -128,7 +112,6 @@ const setWinningScore = () => {
 		: (winningScore = 10);
 };
 
-// NEW GAME FUNCTION
 const newGame = () => {
 	userPlay = '';
 	userScore = 0;
@@ -143,11 +126,9 @@ const newGame = () => {
 	getDOM.btnPaper.disabled = false;
 	getDOM.btnScissors.disabled = false;
 
-	// REMOVE WINNER DISPLAY FROM PREVIOUS GAMES
 	getDOM.playerName.classList.remove('winner');
 	getDOM.computerName.classList.remove('winner');
 
-	// RENDER DOM
 	renderDOM();
 };
 
@@ -156,14 +137,12 @@ const displayWinner = () => {
 	document.querySelector(`.${winner}-name`).classList.add('winner');
 };
 
-// STOP GAME AFTER REACHING WINNING SCORE
 const stopGame = () => {
 	getDOM.btnRock.disabled = true;
 	getDOM.btnPaper.disabled = true;
 	getDOM.btnScissors.disabled = true;
 };
 
-// CHANGE HAND IMAGE BASED ON USER AND COMPUTER SELECTION
 const renderHand = () => {
 	getDOM.playerHand.setAttribute('src', `${userPlay.toLowerCase()}.png`);
 	getDOM.computerHand.setAttribute('src', `${computerPlay.toLowerCase()}.png`);
