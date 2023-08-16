@@ -6,6 +6,7 @@ let rps = ['ROCK', 'PAPER', 'SCISSORS']
 let winningScore = 0
 let winner = ''
 
+// QUERY SELECTOR OBJECT
 const getDOM = {
 	btnRock: document.querySelector('.btn-rock'),
 	btnPaper: document.querySelector('.btn-paper'),
@@ -22,38 +23,35 @@ const getDOM = {
 	computerName: document.querySelector('.computer-name'),
 }
 
+// FUNCTION TO GET USER SELECTION AND ALSO PLAY A ROUND OF GAME BASED ON USER CLICK
 const getPlay = () => {
 	// Get User Play
 	getDOM.btnRock.addEventListener('click', (e) => {
 		userPlay = getDOM.btnRock.textContent
-		console.log(userPlay)
 
 		// SET WINNING SCORE
 		setWinningScore()
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
-		console.log(computerPlay)
 
 		// PLAY GAME & RENDER DOM
 		playGame()
 		renderDOM()
 		renderHand()
 
-		// GET AND ALERT WINNER
+		// GET AND DISPLAY WINNER
 		getWinner()
 	})
 
 	getDOM.btnPaper.addEventListener('click', (e) => {
 		userPlay = getDOM.btnPaper.textContent
-		console.log(userPlay)
 
 		// SET WINNING SCORE
 		setWinningScore()
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
-		console.log(computerPlay)
 
 		// PLAY GAME & RENDER DOM
 		playGame()
@@ -66,14 +64,12 @@ const getPlay = () => {
 
 	getDOM.btnScissors.addEventListener('click', (e) => {
 		userPlay = getDOM.btnScissors.textContent
-		console.log(userPlay)
 
 		// SET WINNING SCORE
 		setWinningScore()
 
 		// Get Computer Play
 		computerPlay = rps[Math.floor(Math.random() * 3)]
-		console.log(computerPlay)
 
 		// PLAY GAME & RENDER DOM
 		playGame()
@@ -85,30 +81,26 @@ const getPlay = () => {
 	})
 }
 
+// GAME LOGIC
 const playGame = () => {
 	if (userPlay === 'ROCK' && computerPlay === 'PAPER') {
 		computerScore = computerScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else if (userPlay === 'ROCK' && computerPlay === 'SCISSORS') {
 		userScore = userScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else if (userPlay === 'PAPER' && computerPlay === 'ROCK') {
 		userScore = userScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else if (userPlay === 'PAPER' && computerPlay === 'SCISSORS') {
 		computerScore = computerScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else if (userPlay === 'SCISSORS' && computerPlay === 'ROCK') {
 		computerScore = computerScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else if ((userPlay === 'SCISSORS' && computerPlay) === 'PAPER') {
 		userScore = userScore + 1
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
 	} else {
-		console.log(`Userscore = ${userScore} Computerscore = ${computerScore}`)
+		return [userScore, computerScore]
 	}
 }
 
+// FUNCTION TO RENDER TO DOM
 const renderDOM = () => {
 	getDOM.playerSelection.textContent = userPlay
 	getDOM.computerSelection.textContent = computerPlay
@@ -116,29 +108,27 @@ const renderDOM = () => {
 	getDOM.computerScore.textContent = computerScore
 }
 
+// FUNCTION TO DETERMINE AND DISPLAY WINNER
 const getWinner = () => {
 	if (userScore === winningScore) {
 		winner = 'player'
 		displayWinner()
-		// alert(`${winner} is the winner!`)
-
 		stopGame()
 	} else if (computerScore === winningScore) {
 		winner = 'computer'
 		displayWinner()
-		// alert(`${winner} is the winner!`)
-
 		stopGame()
 	}
 }
 
+// FUNCTION NTO SET WINNING SCORE, DEFAULT IS 10
 const setWinningScore = () => {
 	getDOM.winnerScore.value
 		? (winningScore = getDOM.winnerScore.value * 1)
 		: (winningScore = 10)
-	console.log(typeof winningScore)
 }
 
+// NEW GAME FUNCTION
 const newGame = () => {
 	userPlay = ''
 	userScore = 0
@@ -148,32 +138,41 @@ const newGame = () => {
 	winningScore = 0
 	winner = ''
 
+	// ENABLES SELECTION BUTTONS
 	getDOM.btnRock.disabled = false
 	getDOM.btnPaper.disabled = false
 	getDOM.btnScissors.disabled = false
 
+	// REMOVE WINNER DISPLAY FROM PREVIOUS GAMES
 	getDOM.playerName.classList.remove('winner')
 	getDOM.computerName.classList.remove('winner')
 
+	// RENDER DOM
 	renderDOM()
 }
 
+// FUNCTION TO DISPLAY WINNER BY ADDING A CLASS
 const displayWinner = () => {
 	document.querySelector(`.${winner}-name`).classList.add('winner')
 }
 
+// STOP GAME AFTER REACHING WINNING SCORE
 const stopGame = () => {
 	getDOM.btnRock.disabled = true
 	getDOM.btnPaper.disabled = true
 	getDOM.btnScissors.disabled = true
 }
 
+// CHANGE HAND IMAGE BASED ON USER AND COMPUTER SELECTION
 const renderHand = () => {
 	getDOM.playerHand.setAttribute('src', `${userPlay.toLowerCase()}.png`)
 	getDOM.computerHand.setAttribute('src', `${computerPlay.toLowerCase()}.png`)
 }
 
+// EVENT LISTENER FOR NEW GAME
 getDOM.btnNew.addEventListener('click', (e) => {
 	newGame()
 })
+
+// CALL GETPLAY FUNCTION THAT CALLS OTHER FUNCTIONS
 getPlay()
