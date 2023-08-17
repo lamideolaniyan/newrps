@@ -21,49 +21,25 @@ const getDOM = {
 	computerHand: document.querySelector('.computer-hand'),
 	playerName: document.querySelector('.player-name'),
 	computerName: document.querySelector('.computer-name'),
+	btnArr: Array.from(document.querySelectorAll('.btn')),
 };
 
 // FUNCTION TO GET USER SELECTION AND ALSO PLAY A ROUND OF GAME BASED ON USER CLICK
 const getPlay = () => {
 	// Get User Play
-	getDOM.btnRock.addEventListener('click', (e) => {
-		userPlay = getDOM.btnRock.textContent;
+	getDOM.btnArr.forEach((btn) => {
+		btn.addEventListener('click', (e) => {
+			userPlay = e.target.textContent;
+			setWinningScore();
 
-		setWinningScore();
+			// Get Computer Play
+			computerPlay = rps[Math.floor(Math.random() * 3)];
 
-		// Get Computer Play
-		computerPlay = rps[Math.floor(Math.random() * 3)];
-
-		playGame();
-		renderDOM();
-		renderHand();
-		getWinner();
-	});
-
-	getDOM.btnPaper.addEventListener('click', (e) => {
-		userPlay = getDOM.btnPaper.textContent;
-
-		setWinningScore();
-
-		computerPlay = rps[Math.floor(Math.random() * 3)];
-
-		playGame();
-		renderDOM();
-		renderHand();
-		getWinner();
-	});
-
-	getDOM.btnScissors.addEventListener('click', (e) => {
-		userPlay = getDOM.btnScissors.textContent;
-
-		setWinningScore();
-
-		computerPlay = rps[Math.floor(Math.random() * 3)];
-
-		playGame();
-		renderDOM();
-		renderHand();
-		getWinner();
+			playGame();
+			renderDOM();
+			renderHand();
+			getWinner();
+		});
 	});
 };
 
@@ -153,5 +129,5 @@ getDOM.btnNew.addEventListener('click', (e) => {
 	newGame();
 });
 
-// CALL GETPLAY FUNCTION THAT CALLS OTHER FUNCTIONS
+// CALL GET PLAY FUNCTION THAT CALLS OTHER FUNCTIONS
 getPlay();
